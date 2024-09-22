@@ -42,7 +42,7 @@ export default function Prompts() {
       if(!currentUser || dailyQuestionData){
         return 
       }                    
-  }, [ currentUser ,dailyQuestionData]);
+  }, [ currentUser ,dailyQuestionData, today]);
   if (loading){
     return <Loading />
   }
@@ -122,7 +122,7 @@ const handleSubmit = async () => {
          p-2 hover:bg-slate-100 text-center' >{haveAnswered ? 'Update' : 'Save'}</button>
     </span>      
                   <div className={'p-2 text-indigo-500  text-center text-xl ' + abril_fatface.className}>
-                  {haveAnswered && <h1 className='text-center textGradient text-2xl p-3'>You're answer for today</h1>}   
+                  {haveAnswered && <h1 className='text-center textGradient text-2xl p-3'>The answer you have done today!</h1>}   
                   <div className="border border-solid border-fill border-slate-400">
                   <h1 className="p-2">{dailyQuestionDisplay}</h1>
                   <p className="p-2 text-sm"> {dailyAnswerDisplay}</p>
