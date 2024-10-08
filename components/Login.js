@@ -92,24 +92,24 @@ export default function Login() {
  
   return (
     <div className='flex flex-col flex-1 justify-center items-center gap-4 px-16 '>
-      <h3 className={'text-3xl sm:text-5xl m:text-6xl text-slate-950 nowrap ' + poppins.className}> {isRegister ? 'Register' : 'Login'}</h3>
+      <h3 className={'text-xl sm:text-2xl m:text-4xl text-slate-950 nowrap ' + poppins.className}> {isRegister ? 'Sign Up to LifeTracker!' : 'Log in to LifeTracker'}</h3>
       <p>You&#39;re one step away</p>
 
       <input value = {email} onChange={(e) => {
         setEmail(e.target.value)
-      }} className='w-full max-w-[400] mx-auto px-3 py-2 sm:py-3 border border-solid border-indigo-400 
+      }} className='bg-gray-100 w-full  mx-auto px-3 py-2 sm:py-3 border border-solid border-indigo-400 
       focus:border-indigo-700 hover:border-indigo-800 rounded-full outline-none' placeholder='Email'/>
       <p className={'text-red-700 mr-auto text-s p-1 ' + poppins.className}>{emailError}</p>
       
       <input value = {password} onChange={(e) => {
         setPassword(e.target.value)
       }}  
-      className='w-full max-w-[400] mx-auto px-3 py-2 sm:py-3 border border-solid border-indigo-400 
+      className='bg-gray-100 w-full mx-auto px-3 py-2 sm:py-3 border border-solid border-indigo-400 
       focus:border-indigo-700 hover:border-indigo-800 rounded-full outline-none' placeholder='Password'/>
       <p className={'text-red-700 mr-auto text-s p-1 ' + poppins.className}>{passwordError}</p>
 
-      <div className='max-w-[400] w-full mx-auto '>
-        <Button clickHandler={handleSubmit} text={authenticating ? "Submitting": "Submit"} full/>
+      <div className=' w-full mx-auto '>
+        <Button clickHandler={handleSubmit} text={isRegister ? "Sign Up" : "Sign In"} full/>
       </div>
 
       <p className='text-center '>{isRegister ? 'Already have an account? ' : 'Don\'t have an account? ' }
