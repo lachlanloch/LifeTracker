@@ -1,13 +1,14 @@
 
 import { AuthProvider, } from "@/context/AuthContext";
 import "./globals.css";
-import { Inter, Abril_Fatface } from "next/font/google";
+import { Abril_Fatface, Inter } from "next/font/google";
 import Link from "next/link";
 import Head from "./head"
 import Logout from "@/components/Logout";
 
-const inter = Inter({ subsets: ["latin"] });
+
 const abrilfatface = Abril_Fatface({ subsets: ["latin"], weight: ['400']});
+const inter = Inter({ subsets: ["latin"], weight: ['400']});
 
 
 //--------------------meta data for page ------------------------
@@ -28,15 +29,15 @@ const header = (
   //--------------header-------------------
 
   //link from next to render before make it faster
-  <header className="p-4 sm:p=8 flex items-center justify-between" >
+  <header className={"p-4 sm:p=8 flex items-center justify-between " + abrilfatface.className}>
     <Link href={'/'}> 
-    <h1 className={'textGradient text-xl sm:text-3xl hover:scale-115 ' + abrilfatface.className}>Lifetracker</h1>
+    <h1 className={'textGradient text-xl sm:text-3xl hover:scale-115 '}>Lifetracker</h1>
     </Link>
     <Link href={"/prompts"}>
-      <h1 className={'textGradient text-xl sm:text-3xl  ' + abrilfatface.className}>DailyQ</h1>  
+      <h1 className={'textGradient text-xl sm:text-3xl  ' }>DailyQ</h1>  
     </Link>
     <Link href={'/dashboard'}>
-    <h1 className={'textGradient text-xl sm:text-3xl ' + abrilfatface.className}>Mood</h1>  
+    <h1 className={'textGradient text-xl sm:text-3xl '}>Mood</h1>  
     </Link>
     <Logout/>
    
