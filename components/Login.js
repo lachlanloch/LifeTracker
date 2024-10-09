@@ -4,13 +4,16 @@ import React, {useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
 import Button from './Button';
 import { useAuth } from '@/context/AuthContext';
+import Link from 'next/link';
+import ForgotPassword from './ForgotPasword';
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const poppins = Poppins({ subsets: ["latin"], weight: ['700']});
+
+
 
 //&#39; use this in place of '
 //focus:border-indigo-700 hover:border-indigo-700 makes it more responsive and shows easier what u have hovered or selected
 export default function Login() {
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isRegister, setIsRegister] = useState(false)
@@ -22,8 +25,9 @@ export default function Login() {
   const [registerError, setRegisterError] = useState()
 
 
+
   useEffect(() =>{
-    
+  
 
     setError('')
     setPasswordError('')
@@ -75,13 +79,11 @@ export default function Login() {
         setRegisterError("The email is already in use")
       }
     
-
-      
       if(!isRegister){
         setError('Your login details do not match please try again') 
       } else {
         
-      }
+      }   
       
     } finally{
       setAuthenticating(false)
@@ -96,6 +98,7 @@ export default function Login() {
       <p>You&#39;re one step away</p>
 
       <input value = {email} onChange={(e) => {
+      
         setEmail(e.target.value)
       }} className='bg-gray-100 w-full  mx-auto px-3 py-2 sm:py-3 border border-solid border-indigo-400 
       focus:border-indigo-700 hover:border-indigo-800 rounded-full outline-none' placeholder='Email'/>
@@ -106,7 +109,15 @@ export default function Login() {
       }}  
       className='bg-gray-100 w-full mx-auto px-3 py-2 sm:py-3 border border-solid border-indigo-400 
       focus:border-indigo-700 hover:border-indigo-800 rounded-full outline-none' placeholder='Password'/>
-      <p className={'text-red-700 mr-auto text-s p-1 ' + poppins.className}>{passwordError}</p>
+      
+      {passwordError!=="" && <p className={'text-red-700 mr-auto text-s p-1 ' + poppins.className}>{passwordError}</p>}
+      <Link href="/forgotpassword">
+      <p>Forgot Password?</p>
+      </Link>
+
+     
+
+
 
       <div className=' w-full mx-auto '>
         <Button clickHandler={handleSubmit} text={isRegister ? "Sign Up" : "Sign In"} full/>

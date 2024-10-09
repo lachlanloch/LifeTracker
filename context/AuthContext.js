@@ -1,9 +1,10 @@
 
 'use client'
 import { auth, db } from '@/firebase'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, getAuth } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut , sendPasswordResetEmail} from 'firebase/auth'
 import { doc, getDoc, collection, getDocs} from 'firebase/firestore'
 import "firebase/firestore";
+
 
 import React, { useContext, useState, useEffect } from 'react'
 
@@ -36,6 +37,16 @@ export function AuthProvider({ children }) {
         setCurrentUser(null)
         return signOut(auth)
     }
+
+    const sendResetEmail = async (email) => {
+        try {
+          await sendPasswordResetEmail(auth, email);
+          console.log('Password reset email sent successfully');
+        } catch (error) {
+          console.error('Error sending password reset email:', error.message);
+          throw error; // Propagate the error to be handled by the caller
+        }
+      };
 
 
 
@@ -84,6 +95,7 @@ export function AuthProvider({ children }) {
         currentUser,
         userDataObj,
         setUserDataObj,
+        sendResetEmail,
         dailyQuestionData,
         setDailyQuestionData,
         signup,
