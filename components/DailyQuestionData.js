@@ -44,6 +44,8 @@ export default function DailyQuestionData() {
 <input value={filter} className='text-indigo-400 p-2 border border-solid rounded-2xl text-center' placeholder='Filter By Question!' onChange={(e) =>{
   setFilter(e.target.value)
 }}/>
+
+<div className='grid grid-cols-3 gap-2 ' >
       {dailyQuestionData.filter((item) =>{
                 return filter.toLowerCase() === ""
                 ? item.question
@@ -51,9 +53,11 @@ export default function DailyQuestionData() {
               })
       .map((data)=>{
         return(        
-         <div key={data.id} className='break-all border border-solid p-2 bg-indigo-200 rounded-lg border-slate-400 text-center'> 
 
-          
+         <div key={data.id} className='break-words border border-solid p-2 bg-gray-200 rounded-lg border-slate-400 text-center my-2' > 
+
+
+            
           <i className="fa-solid fa-trash text-red-500" onClick={() =>{
             console.log("deleting data ", data.id)
             handleDeleteData(data.id)
@@ -62,11 +66,16 @@ export default function DailyQuestionData() {
             
         <h1 className=''>{data.question}</h1>
         <p className=''>{data.answer}</p>
-        <p className='text-xs'>{data.day}/{data.month}/{data.year}</p>
+        
+    
+        <p className='text-xs my-2'>{data.day}/{data.month}/{data.year}</p>
         </div>
+       
         )
         
       })}
+
+</div>
 
   </div>     
   )

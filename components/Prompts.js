@@ -7,10 +7,10 @@ import Loading from './Loading';
 import { db } from '@/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import Link from 'next/link';
-import { Abril_Fatface, DM_Serif_Text } from 'next/font/google';
+import { Abril_Fatface, Poppins } from 'next/font/google';
 
 const abril_fatface = Abril_Fatface({ subsets: ["latin"], weight: ['400'] });
-const dm_serif_text = DM_Serif_Text({ subsets: ["latin"], weight: ['400'], style: ['italic'] });
+const poppins = Poppins({ subsets: ["latin"], weight: ['400'], style: ['italic'] });
 
 export default function Prompts() {
 
@@ -19,7 +19,6 @@ export default function Prompts() {
   const [dailyQuestion, setDailyQuestion] = useState(getRandomQuestion());
   const [answer, setAnswer] = useState('');
   const [haveAnswered, setHaveAnswered] = useState(false);
-
   const date = new Date();
   const year = date.getUTCFullYear();
   const month = date.getUTCMonth() + 1;
@@ -112,7 +111,7 @@ export default function Prompts() {
   };
 
   return (
-    <div className={'grid grid-rows gap-3 ' + dm_serif_text.className}>
+    <div className={'grid grid-rows gap-3 ' + poppins.className}>
       <h1 className="text-blue-500 max-w-[75px] text-l">
         <Link href="/viewall">View All</Link>
       </h1>
@@ -123,7 +122,7 @@ export default function Prompts() {
         <i className="fa-solid fa-dice"></i>
       </button>
       <h1 className='text-4xl text-center text-indigo-500 mx-auto py-4'>
-        <span className={abril_fatface.className}>{dailyQuestion}</span>
+        <span className={poppins.className}>{dailyQuestion}</span>
       </h1>
       <h1 className='text-2xl text-center py-3'>
         Welcome to the <span className='textGradient'>daily</span> question about <span className='textGradient'>life</span>!
@@ -147,9 +146,9 @@ export default function Prompts() {
             {haveAnswered ? 'Update' : 'Save'}
           </button>
         </span>
-        <div className={'p-2 text-indigo-500 text-center text-xl whitespace-pre-wrap word-wrap ' + abril_fatface.className}>
-        {haveAnswered && <h1 className='text-center textGradient text-2xl p-3'>The answer you have done today!</h1>}
-        {haveAnswered && <div className="border border-solid border-fill border-slate-400 ">
+        <div className={'p-2 text-indigo-500  text-xl whitespace-pre-wrap word-wrap ' + poppins.className}>
+        {haveAnswered && <h1 className='text-center text-green-500 text-2xl p-3'>The answer you have done today!</h1>}
+        {haveAnswered && <div className="border border-solid border-fill border-slate-400 rounded-2xl bg-gray-100">
             <h1 className="p-2">{dailyQuestionDisplay}</h1>
             <p className="p-2 text-sm break-all ">{dailyAnswerDisplay}</p>
           </div>}

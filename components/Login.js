@@ -5,7 +5,6 @@ import { Poppins } from 'next/font/google';
 import Button from './Button';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
-import ForgotPassword from './ForgotPasword';
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const poppins = Poppins({ subsets: ["latin"], weight: ['700']});
 

@@ -1,12 +1,12 @@
 
 import { AuthProvider, } from "@/context/AuthContext";
 import "./globals.css";
-import { Abril_Fatface, Inter } from "next/font/google";
+import { Abril_Fatface, Inter, Poppins } from "next/font/google";
 import Link from "next/link";
 import Head from "./head"
 import Logout from "@/components/Logout";
 
-
+const poppins = Poppins({ subsets: ["latin"], weight: ['400']})
 const abrilfatface = Abril_Fatface({ subsets: ["latin"], weight: ['400']});
 const inter = Inter({ subsets: ["latin"], weight: ['400']});
 
@@ -64,7 +64,7 @@ const footer = (
           <html lang="en">
             <Head/>
             <AuthProvider>
-            <body className={'max-w-[750px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-700 ' + inter.className}>
+            <body className={'max-w-[750px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-700 ' + poppins.className}>
               {header}
               {children}
               {footer}
