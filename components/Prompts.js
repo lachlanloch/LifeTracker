@@ -149,7 +149,7 @@ export default function Prompts() {
         <div className={'p-2 text-indigo-500  text-xl whitespace-pre-wrap word-wrap ' + poppins.className}>
         {haveAnswered && <h1 className='text-center text-green-500 text-2xl p-3'>The answer you have done today!</h1>}
         {haveAnswered && <div className="border border-solid border-fill border-slate-400 rounded-2xl bg-gray-100">
-            <h1 className="p-2">{dailyQuestionDisplay}</h1>
+            <h1 className="p-2 text-center">{dailyQuestionDisplay}</h1>
             <p className="p-2 text-sm break-all ">{dailyAnswerDisplay}</p>
           </div>}
         </div>
