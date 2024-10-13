@@ -9,8 +9,9 @@ import Login from './Login'
 
 
 export default function DailyQuestionData() {
+  
   const [filter, setFilter] = useState('')
-  const {dailyQuestionData, setDailyQuestionData, currentUser} = useAuth()
+  const {dailyQuestionData, setDailyQuestionData, currentUser, loading} = useAuth()
 
   if (loading){
     return <Loading />
