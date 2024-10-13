@@ -4,11 +4,21 @@ import Link from 'next/link'
 import {React, useState} from 'react'
 import { doc, deleteDoc } from 'firebase/firestore'
 import { db } from '@/firebase';
+import Loading from './Loading'
+import Login from './Login'
 
 
 export default function DailyQuestionData() {
   const [filter, setFilter] = useState('')
   const {dailyQuestionData, setDailyQuestionData, currentUser} = useAuth()
+
+  if (loading){
+    return <Loading />
+  }
+
+  if (!currentUser){
+    return <Login />
+  }
 
 
   async function handleDeleteData(dataId){
@@ -33,14 +43,12 @@ export default function DailyQuestionData() {
 <input value={filter} className='text-indigo-400 p-2 border border-solid rounded-2xl text-center' placeholder='Filter By Question!' onChange={(e) =>{
   setFilter(e.target.value)
 }}/>
-      
       {dailyQuestionData.filter((item) =>{
                 return filter.toLowerCase() === ""
                 ? item.question
                 : item.question.toLowerCase().includes(filter.toLowerCase())
               })
       .map((data)=>{
-
         return(        
          <div key={data.id} className='break-all border border-solid p-2 bg-indigo-200 rounded-lg border-slate-400 text-center'> 
 
